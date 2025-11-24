@@ -6,12 +6,10 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-purple-600 text-white">
       <div className="max-w-md mx-auto px-4 h-20 flex items-center justify-between">
-        {/* Center: Store Name */}
-        <div className="flex-1 text-center">
-          <div className="flex items-center justify-center gap-2">
-            <Store size={28} />
-            <span className="text-2xl">Encontrei!</span>
-          </div>
+        {/* Left: Store Name aligned with content start of cards */}
+        <div className="flex items-center gap-2 ml-7">
+          <Store size={28} />
+          <span className="text-2xl">Encontrei!</span>
         </div>
 
         {/* Right: Notification Icon */}
