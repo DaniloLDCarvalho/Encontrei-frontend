@@ -1,28 +1,21 @@
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import ProductList from './components/ProductList'
-import ProductDetail from './components/ProductDetail'
-import StoreList from './components/StoreList'
-import ReservationForm from './components/ReservationForm'
+import VendorHome from './app/vendedorHomepage'
 
 export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <h1>Encontrei</h1>
         <nav>
-          <Link to="/">Produtos</Link>
-          <Link to="/stores">Lojas</Link>
-          <Link to="/reservations">Reservar</Link>
+          <Link to="/">Vendedor</Link>
+          <Link to="/vendor">Vendedor Home</Link>
         </nav>
       </header>
 
       <main>
         <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/stores" element={<StoreList />} />
-          <Route path="/reservations" element={<ReservationForm />} />
+          <Route path="/" element={<VendorHome />} />
+          <Route path="/vendor" element={<VendorHome />} />
         </Routes>
       </main>
 

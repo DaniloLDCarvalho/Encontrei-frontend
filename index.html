@@ -4,6 +4,41 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Encontrei - Frontend</title>
+    <!-- Tailwind Play CDN for quick local prototyping (no install needed) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // Optional quick config: extend primary color used by some components
+      // Ajustado para o roxo pedido: rgb(95,70,156) -> #5F469C
+      window.tailwind = {
+        config: {
+          theme: {
+            extend: {
+              colors: {
+                primary: '#5F469C',
+                // Override purple shades used in components (e.g., bg-purple-600)
+                // Map a range of purple shades so all `purple-*` utilities use the requested tone.
+                purple: {
+                  50:  '#f6f4fb',
+                  100: '#efeaf8',
+                  200: '#dfd5f1',
+                  300: '#cfc0e9',
+                  400: '#a98bd9',
+                  500: '#8265c8',
+                  600: '#5F469C',
+                  700: '#4B357E',
+                  800: '#392a63',
+                  900: '#25183a'
+                }
+              },
+              fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] }
+            }
+          }
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <div id="root"></div>
