@@ -1,8 +1,48 @@
 :root{
   --bg:#f6f7fb;
   --card:#fff;
-  --accent:#0b5fff;
+  /* cor primária atualizada para rgb(95,70,156) (#5F469C) */
+  --accent:#5F469C;
 }
+
+/* Forçar escala de roxos baseada em #5F469C para garantir consistência
+   mesmo se o Tailwind CDN não for recarregado. Usamos !important para
+   garantir que as utilidades existentes sejam sobrescritas. */
+:root{
+  --purple-50:  #f6f4fb;
+  --purple-100: #efeaf8;
+  --purple-200: #dfd5f1;
+  --purple-300: #cfc0e9;
+  --purple-400: #a98bd9;
+  --purple-500: #8265c8;
+  --purple-600: #5F469C; /* principal */
+  --purple-700: #4B357E;
+  --purple-800: #392a63;
+  --purple-900: #25183a;
+}
+
+/* Overrides for Tailwind utility classes used in the UI */
+.bg-purple-600{ background-color:var(--purple-600) !important }
+.text-purple-600{ color:var(--purple-600) !important }
+.border-purple-600{ border-color:var(--purple-600) !important }
+.border-l-purple-600{ border-left-color:var(--purple-600) !important }
+.bg-purple-50{ background-color:var(--purple-50) !important }
+.bg-purple-100{ background-color:var(--purple-100) !important }
+.border-purple-200{ border-color:var(--purple-200) !important }
+.text-purple-700{ color:var(--purple-700) !important }
+.hover\:bg-purple-700:hover{ background-color:var(--purple-700) !important }
+.hover\:bg-purple-100:hover{ background-color:var(--purple-100) !important }
+.hover\:border-purple-300:hover{ border-color:var(--purple-300) !important }
+.from-purple-50 { --tw-gradient-from: var(--purple-50) !important }
+.to-white { --tw-gradient-to: #ffffff !important }
+.bg-gradient-to-br { /* ensure gradient direction class doesn't get lost */ }
+.text-purple-700{ color:var(--purple-700) !important }
+
+/* Common component overrides */
+.topbar{ background-color: var(--purple-600) !important; }
+.topbar .topbar h1, .topbar h1{ color: white !important }
+.card .btn, button.bg-purple-600, .btn-primary{ background-color:var(--purple-600) !important; color: #fff !important }
+
 body{font-family:Inter,Segoe UI,Arial,sans-serif;margin:0;background:var(--bg);color:#111}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:#fff;border-bottom:1px solid #e6e6e6}
 .topbar h1{margin:0;font-size:20px}
