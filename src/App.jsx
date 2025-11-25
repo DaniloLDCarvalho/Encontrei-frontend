@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import VendorHome from './app/vendedorHomepage'
+import BuyerHome from './app/buyerHomepage.jsx'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<VendorHome />} />
           <Route path="/vendor" element={<VendorHome />} />
+          <Route path="/buyer" element={<BuyerHome />} />
         </Routes>
       </main>
 
