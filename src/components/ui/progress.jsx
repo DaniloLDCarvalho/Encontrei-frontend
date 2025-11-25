@@ -9,7 +9,7 @@ function Progress({
   className,
   value,
   ...props
-}: React.ComponentProps<typeof ProgressPrimitive.Root>) {
+}) {
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
@@ -29,3 +29,4 @@ function Progress({
 }
 
 export { Progress }
+

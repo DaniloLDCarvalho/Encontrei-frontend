@@ -1,5 +1,3 @@
-type ClassValue = string | false | null | undefined | { [k: string]: any } | Array<ClassValue>
-
 export function cn(...classes: ClassValue[]) {
   const res: string[] = []
   const walk = (v: ClassValue) => {
@@ -14,3 +12,4 @@ export function cn(...classes: ClassValue[]) {
   classes.forEach(walk)
   return res.join(' ')
 }
+

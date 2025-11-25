@@ -14,11 +14,9 @@ export type ChartConfig = {
     icon?: React.ComponentType
   } & (
     | { color?: string; theme?: never }
-    | { color?: never; theme: Record<keyof typeof THEMES, string> }
+    | { color?: never; theme: Record }
   )
 }
-
-type ChartContextProps = {
   config: ChartConfig
 }
 
@@ -40,7 +38,7 @@ function ChartContainer({
   children,
   config,
   ...props
-}: React.ComponentProps<'div'> & {
+}
   config: ChartConfig
   children: React.ComponentProps<
     typeof RechartsPrimitive.ResponsiveContainer
@@ -69,7 +67,7 @@ function ChartContainer({
   )
 }
 
-const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
+const ChartStyle = ({ id, config }) => {
   const colorConfig = Object.entries(config).filter(
     ([, config]) => config.theme || config.color,
   )
@@ -90,7 +88,7 @@ ${colorConfig
     const color =
       itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
       itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
+    return color ? `  --color-${key}
   })
   .join('\n')}
 }
@@ -118,7 +116,7 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
+}
   React.ComponentProps<'div'> & {
     hideLabel?: boolean
     hideIndicator?: boolean
@@ -256,7 +254,7 @@ function ChartLegendContent({
   payload,
   verticalAlign = 'bottom',
   nameKey,
-}: React.ComponentProps<'div'> &
+}
   Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
     hideIcon?: boolean
     nameKey?: string
@@ -351,3 +349,4 @@ export {
   ChartLegendContent,
   ChartStyle,
 }
+

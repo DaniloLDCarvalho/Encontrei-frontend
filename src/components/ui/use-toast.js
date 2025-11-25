@@ -7,8 +7,6 @@ import type { ToastActionElement, ToastProps } from '@/components/ui/toast'
 
 const TOAST_LIMIT = 1
 const TOAST_REMOVE_DELAY = 1000000
-
-type ToasterToast = ToastProps & {
   id: string
   title?: React.ReactNode
   description?: React.ReactNode
@@ -28,17 +26,13 @@ function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER
   return count.toString()
 }
-
-type ActionType = typeof actionTypes
-
-type Action =
   | {
       type: ActionType['ADD_TOAST']
       toast: ToasterToast
     }
   | {
       type: ActionType['UPDATE_TOAST']
-      toast: Partial<ToasterToast>
+      toast: Partial
     }
   | {
       type: ActionType['DISMISS_TOAST']
@@ -49,11 +43,7 @@ type Action =
       toastId?: ToasterToast['id']
     }
 
-interface State {
-  toasts: ToasterToast[]
-}
-
-const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>()
+const toastTimeouts = new Map()
 
 const addToRemoveQueue = (toastId: string) => {
   if (toastTimeouts.has(toastId)) {
@@ -83,7 +73,7 @@ export const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         toasts: state.toasts.map((t) =>
-          t.id === action.toast.id ? { ...t, ...action.toast } : t,
+          t.id === action.toast.id ? { ...t, ...action.toast }
         ),
       }
 
@@ -108,7 +98,6 @@ export const reducer = (state: State, action: Action): State => {
                 ...t,
                 open: false,
               }
-            : t,
         ),
       }
     }
@@ -136,10 +125,7 @@ function dispatch(action: Action) {
     listener(memoryState)
   })
 }
-
-type Toast = Omit<ToasterToast, 'id'>
-
-function toast({ ...props }: Toast) {
+function toast({ ...props }) {
   const id = genId()
 
   const update = (props: ToasterToast) =>
@@ -169,7 +155,7 @@ function toast({ ...props }: Toast) {
 }
 
 function useToast() {
-  const [state, setState] = React.useState<State>(memoryState)
+  const [state, setState] = React.useState(memoryState)
 
   React.useEffect(() => {
     listeners.push(setState)
@@ -189,3 +175,4 @@ function useToast() {
 }
 
 export { useToast, toast }
+

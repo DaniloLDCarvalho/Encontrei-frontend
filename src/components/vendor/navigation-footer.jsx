@@ -2,12 +2,7 @@
 
 import { Home, Package, FileText, User } from "lucide-react"
 
-interface NavigationFooterProps {
-  activeNav: string
-  setActiveNav: (nav: string) => void
-}
-
-export default function NavigationFooter({ activeNav, setActiveNav }: NavigationFooterProps) {
+export default function NavigationFooter({ activeNav, setActiveNav }) {
   const navItems = [
     { id: "home", label: "Home", icon: Home },
     { id: "products", label: "Produtos", icon: Package },
@@ -38,3 +33,4 @@ export default function NavigationFooter({ activeNav, setActiveNav }: Navigation
     </nav>
   )
 }
+
