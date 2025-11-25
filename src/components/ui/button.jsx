@@ -3,8 +3,8 @@ import * as React from 'react'
 // `class-variance-authority` não estiver instalada. Isso apenas seleciona
 // as classes definidas em `variants` com base nas opções fornecidas e
 // concatena `className` — suficiente para desenvolvimento local.
-function cva(base: string, config?: any) {
-  return (opts: any = {}) => {
+function cva(base, config) {
+  return (opts = {}) => {
     let classes = base || ''
     if (config && config.variants) {
       for (const variantKey of Object.keys(config.variants)) {
@@ -57,18 +57,9 @@ const buttonVariants = cva(
 
 // Fallback simples para @radix-ui/react-slot quando a lib não estiver instalada.
 // O Slot apenas renderiza os filhos diretamente — bom para desenvolvimento local.
-const Slot: React.FC<React.PropsWithChildren> = ({ children }) => <>{children}</>
+const Slot = ({ children }) => <>{children}</>
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}
-  VariantProps & {
-    asChild?: boolean
-  }) {
+function Button({ className, variant, size, asChild = false, ...props }) {
   const Comp = asChild ? Slot : 'button'
 
   return (
