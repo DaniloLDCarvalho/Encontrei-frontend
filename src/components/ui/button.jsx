@@ -3,8 +3,6 @@ import * as React from 'react'
 // `class-variance-authority` não estiver instalada. Isso apenas seleciona
 // as classes definidas em `variants` com base nas opções fornecidas e
 // concatena `className` — suficiente para desenvolvimento local.
-type VariantProps<T> = Record<string, any>
-
 function cva(base: string, config?: any) {
   return (opts: any = {}) => {
     let classes = base || ''
@@ -67,8 +65,8 @@ function Button({
   size,
   asChild = false,
   ...props
-}: React.ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
+}
+  VariantProps & {
     asChild?: boolean
   }) {
   const Comp = asChild ? Slot : 'button'
@@ -84,3 +82,4 @@ function Button({
 
 export { Button, buttonVariants }
 export default Button
+
