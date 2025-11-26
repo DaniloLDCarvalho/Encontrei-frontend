@@ -1,0 +1,59 @@
+/* Container do Botão (A pílula) */
+.SwitchRoot {
+  width: 42px;
+  height: 25px;
+  background-color: #e4e4e7; /* Cinza claro (Desligado) */
+  border-radius: 9999px;
+  position: relative;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* Quando estiver focado pelo teclado */
+.SwitchRoot:focus {
+  box-shadow: 0 0 0 2px rgba(95, 70, 156, 0.3);
+}
+
+/* Estado Ligado (Checked) */
+.SwitchRoot[data-state='checked'] {
+  background-color: #5F469C; /* Roxo Principal */
+}
+
+/* A Bolinha (Thumb) */
+.SwitchThumb {
+  display: block;
+  width: 21px;
+  height: 21px;
+  background-color: white;
+  border-radius: 9999px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 100ms;
+  transform: translateX(2px); /* Posição inicial */
+  will-change: transform;
+}
+
+/* Animação da Bolinha quando ligado */
+.SwitchRoot[data-state='checked'] .SwitchThumb {
+  transform: translateX(19px); /* Move para a direita */
+}
+
+/* Layout para o label ficar ao lado do switch */
+.filter-row-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  cursor: pointer;
+}
+
+.filter-row-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

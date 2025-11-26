@@ -49,8 +49,6 @@ function SheetContent({
   children,
   side = 'right',
   ...props
-}
-  side?: 'top' | 'right' | 'bottom' | 'left'
 }) {
   return (
     <SheetPortal>
