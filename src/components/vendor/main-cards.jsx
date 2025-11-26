@@ -1,46 +1,36 @@
 "use client"
 
-import { User, Package } from "lucide-react"
+import { Package, ShoppingBag, Store } from "lucide-react"
 import Card from "../ui/card"
 import Button  from "../ui/button"
+import ProductsCarousel from "./products-carousel"
+
+function StatPill({ label, value, Icon }) {
+  return (
+    <div className="bg-white border border-gray-100 rounded-md p-1 flex flex-col items-center text-center min-w-0 transform transition-transform duration-150 hover:-translate-y-1 hover:shadow-md cursor-pointer">
+      <div className="w-9 h-9 bg-purple-50 rounded-md flex items-center justify-center mb-1">
+        <Icon className="text-[#5F469C]" size={18} />
+      </div>
+      <div className="text-[11px] text-gray-500 leading-tight">{label}</div>
+      <div className="font-semibold text-lg text-gray-800 mt-1">{value}</div>
+    </div>
+  )
+}
 
 export default function MainCards() {
   return (
     <div className="space-y-4">
-      {/* My Profile Card */}
-      <Card className="border-l-4 border-l-purple-600 bg-gradient-to-br from-purple-50 to-white p-6">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <User className="text-purple-600" size={24} />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg text-gray-800 mb-1">Meu Perfil</h3>
-            <p className="text-sm text-gray-600 mb-4">
-              Acesso ao perfil do vendedor (informações pessoais, endereço, dados da loja)
-            </p>
-            <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">Ver Perfil</Button>
-          </div>
-        </div>
-      </Card>
+      {/* Sales / Stats row (replaces Meu Perfil) */}
+      <div className="grid grid-cols-3 gap-2 items-stretch">
+        <StatPill Icon={ShoppingBag} label="Vendas Hoje" value="R$ 450,00" />
+        <StatPill Icon={Package} label="Total de Pedidos" value="12" />
+        <StatPill Icon={Store} label="Produtos Ativos" value="28" />
+      </div>
 
-      {/* Products Card */}
-      <Card className="border-l-4 border-l-purple-600 bg-gradient-to-br from-purple-50 to-white p-6">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-            <Package className="text-purple-600" size={24} />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-semibold text-lg text-gray-800 mb-1">Produtos</h3>
-            <p className="text-sm text-gray-600 mb-4">Ver lista de produtos cadastrados</p>
-            <div className="space-y-2">
-              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">Ver Produtos</Button>
-              <Button className="w-full border border-purple-200 bg-purple-50 text-purple-600 hover:bg-purple-100">
-                + Cadastrar novo produto
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Card>
+      {/* Products carousel */}
+      <div className="mt-3">
+        <ProductsCarousel />
+      </div>
     </div>
   )
 }
