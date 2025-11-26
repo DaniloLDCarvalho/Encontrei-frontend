@@ -1,8 +1,7 @@
-/* Container do Botão (A pílula) */
 .SwitchRoot {
   width: 42px;
   height: 25px;
-  background-color: #e4e4e7; /* Cinza claro (Desligado) */
+  background-color: #e4e4e7;
   border-radius: 9999px;
   position: relative;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
@@ -12,17 +11,14 @@
   transition: background-color 0.2s;
 }
 
-/* Quando estiver focado pelo teclado */
 .SwitchRoot:focus {
   box-shadow: 0 0 0 2px rgba(95, 70, 156, 0.3);
 }
 
-/* Estado Ligado (Checked) */
 .SwitchRoot[data-state='checked'] {
-  background-color: #5F469C; /* Roxo Principal */
+  background-color: #5F469C;
 }
 
-/* A Bolinha (Thumb) */
 .SwitchThumb {
   display: block;
   width: 21px;
@@ -31,16 +27,14 @@
   border-radius: 9999px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   transition: transform 100ms;
-  transform: translateX(2px); /* Posição inicial */
+  transform: translateX(2px);
   will-change: transform;
 }
 
-/* Animação da Bolinha quando ligado */
 .SwitchRoot[data-state='checked'] .SwitchThumb {
-  transform: translateX(19px); /* Move para a direita */
+  transform: translateX(19px);
 }
 
-/* Layout para o label ficar ao lado do switch */
 .filter-row-switch {
   display: flex;
   align-items: center;

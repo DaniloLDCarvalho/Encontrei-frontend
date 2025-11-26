@@ -69,7 +69,7 @@ const BuyerProductsPage = () => {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
-                        {/* Botão X para limpar busca (Visual) */}
+
                         {searchTerm && (
                             <button
                                 onClick={() => setSearchTerm("")}

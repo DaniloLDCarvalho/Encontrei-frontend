@@ -9,17 +9,14 @@
     to { transform: translateX(0); }
 }
 
-/* 1. O Fundo Escuro (Overlay) */
 .DialogOverlay {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     inset: 0;
     z-index: 90;
-    /* Animação automática quando abre */
     animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 2. O Painel Lateral (Content) */
 .DialogContent {
     background-color: white;
     position: fixed;
@@ -32,13 +29,9 @@
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    outline: none; /* Remove borda azul de foco padrão */
-
-    /* Animação de Slide */
+    outline: none;
     animation: contentShow 300ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* --- Estilos Internos (Iguais ao anterior) --- */
 
 .sheet-header {
     padding: 20px;
@@ -144,7 +137,6 @@
     color: white;
 }
 
-/* Gatilho */
 .trigger-btn {
     background: transparent;
     border: none;

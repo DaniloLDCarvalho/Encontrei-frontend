@@ -60,7 +60,6 @@ export const ProductFiltersSheet = ({
 
                 <Dialog.Content className="DialogContent">
 
-                    {/* Header */}
                     <div className="sheet-header">
                         <Dialog.Title className="sheet-title">
                             Filtros <small style={{fontSize: '0.8rem', fontWeight: 400}}>({totalResults})</small>
