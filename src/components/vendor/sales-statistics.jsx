@@ -17,24 +17,24 @@ const salesData = [
 
 function SalesStatistics() {
   return (
-    <Card className="border-l-4 border-l-purple-600 bg-gradient-to-br from-purple-50 to-white p-6">
-      <div className="flex items-start gap-4 mb-4">
-        <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-          <TrendingUp className="text-purple-600" size={24} />
+    <Card className="border-l-4 border-l-purple-600 bg-gradient-to-br from-purple-50 to-white p-4">
+      <div className="flex items-start gap-3 mb-3">
+        <div className="w-10 h-10 bg-purple-100 rounded-md flex items-center justify-center flex-shrink-0">
+          <TrendingUp className="text-purple-600" size={18} />
         </div>
         <div className="flex-1">
-          <h3 className="font-semibold text-lg text-gray-800 mb-1">Estatísticas de vendas</h3>
-          <p className="text-sm text-gray-600">Gráficos simples (vendas do mês, produtos mais vistos)</p>
+          <h3 className="font-semibold text-base text-gray-800 mb-0">Estatísticas de vendas</h3>
+          <p className="text-xs text-gray-600">Gráficos simples (vendas do mês, produtos mais vistos)</p>
         </div>
       </div>
 
       {/* Chart */}
-      <div className="mt-6 mb-6">
-        <ResponsiveContainer width="100%" height={250}>
+      <div className="mt-4 mb-4">
+        <ResponsiveContainer width="100%" height={160}>
           <BarChart data={salesData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-            <XAxis dataKey="day" stroke="#999" style={{ fontSize: "12px" }} />
-            <YAxis stroke="#999" style={{ fontSize: "12px" }} />
+            <XAxis dataKey="day" stroke="#999" style={{ fontSize: "11px" }} />
+            <YAxis stroke="#999" style={{ fontSize: "11px" }} />
             <Tooltip
               contentStyle={{
                 backgroundColor: "#fff",
@@ -42,20 +42,20 @@ function SalesStatistics() {
                 borderRadius: "8px",
               }}
             />
-            <Bar dataKey="sales" fill="#5F469C" radius={[8, 8, 0, 0]} />
+            <Bar dataKey="sales" fill="#5F469C" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
       {/* AI Suggestion */}
-      <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-        <p className="text-sm text-purple-700">
+      <div className="bg-purple-50 border border-purple-200 rounded-md p-3 mb-3">
+        <p className="text-xs text-purple-700">
           <span className="font-semibold">💡 Sugestão da IA:</span> Seus produtos mais vistos estão com estoque baixo.
           Considere reabastecer para não perder vendas!
         </p>
       </div>
 
-      <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">Ver Estatísticas Completas</Button>
+      <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white text-sm">Ver Estatísticas</Button>
     </Card>
   )
 }
