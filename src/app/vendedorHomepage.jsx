@@ -3,9 +3,11 @@
 import { useState } from "react"
 import Header from "../components/vendor/header"
 import MainCards from "../components/vendor/main-cards"
-import QuickShortcuts from "../components/vendor/quick-shortcuts"
+// QuickShortcuts removed per design request
 import NavigationFooter from "../components/vendor/navigation-footer"
 import SalesStatistics from "../components/vendor/sales-statistics"
+import FloatingAddButton from "../components/vendor/floating-add-button"
+import RecentOrdersCarousel from "../components/vendor/recent-orders-carousel"
 
 export default function VendorHome() {
   const [activeNav, setActiveNav] = useState("home")
@@ -24,12 +26,13 @@ export default function VendorHome() {
             <SalesStatistics />
           </div>
 
-          {/* Quick Shortcuts */}
-          <div className="mt-8">
-            <QuickShortcuts />
-          </div>
+          {/* Quick Shortcuts removed */}
+          <RecentOrdersCarousel />
         </div>
       </main>
+
+      {/* Floating add button */}
+      <FloatingAddButton />
 
       {/* Navigation Footer */}
       <NavigationFooter activeNav={activeNav} setActiveNav={setActiveNav} />
