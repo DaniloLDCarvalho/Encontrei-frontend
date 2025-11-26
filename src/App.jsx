@@ -2,6 +2,8 @@ import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import VendorHome from './app/vendedorHomepage'
 import BuyerHome from './app/buyerHomepage.jsx'
+import VendorProductsPage from "@/modules/vendor/vendorProductsPage/VendorProductsPage.jsx";
+import BuyerProductsPage from "@/modules/buyer/buyerProductsPage/BuyerProductsPage";
 
 export default function App() {
   return (
@@ -18,6 +20,8 @@ export default function App() {
           <Route path="/" element={<VendorHome />} />
           <Route path="/vendor" element={<VendorHome />} />
           <Route path="/buyer" element={<BuyerHome />} />
+          <Route path="/vendor/products" element={<VendorProductsPage/>} />
+          <Route path="/buyer/products" element={<BuyerProductsPage/>} />
         </Routes>
       </main>
 
