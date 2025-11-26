@@ -20,7 +20,22 @@ const getProductById = async (id) => {
     return apiRequest(`${API_URL}/${id}`, 'GET');
 }
 
+const createProduct = async (productData) => {
+    return apiRequest(API_URL, 'POST', productData);
+}
+
+const updateProduct = async (id, productData) => {
+    return apiRequest(`${API_URL}/${id}`, 'PUT', productData);
+}
+
+const deleteProduct = async (id) => {
+   return apiRequest(`${API_URL}/${id}`, 'DELETE');
+}
+
 export const productService = {
     getAllProducts,
     getProductById,
+    createProduct,
+    deleteProduct,
+    updateProduct
 }

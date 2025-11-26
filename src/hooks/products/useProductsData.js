@@ -13,9 +13,12 @@ export const useProductsData = () => {
     });
 
     const productsData = useMemo(() => {
-        const products = (isDev && (!productsQuery.data || productsQuery.data.length !== 0))
-            ? [...productsDataMock]
-            : (productsQuery.data ?? []);
+        const apiData = productsQuery.data;
+        const hasApiData = apiData && apiData.length > 0;
+
+        const productsSource = hasApiData ? apiData : (isDev ? productsDataMock : []);
+
+        const products = [...productsSource]
 
         const lowInStockProducts = products.filter(product => product.stock <= 5 && product.stock > 0);
         const outOfStockProducts = products.filter(product => product.stock === 0);
