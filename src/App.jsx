@@ -4,6 +4,7 @@ import VendorHome from './app/vendedorHomepage'
 import BuyerHome from './app/buyerHomepage.jsx'
 import VendorProductsPage from "@/modules/vendor/vendorProductsPage/VendorProductsPage.jsx";
 import BuyerProductsPage from "@/modules/buyer/buyerProductsPage/BuyerProductsPage";
+import ProductFormPage from "@/modules/vendor/ProductFormPage/ProductFormPage";
 
 export default function App() {
   return (
@@ -22,6 +23,9 @@ export default function App() {
           <Route path="/buyer" element={<BuyerHome />} />
           <Route path="/vendor/products" element={<VendorProductsPage/>} />
           <Route path="/buyer/products" element={<BuyerProductsPage/>} />
+          <Route path="/product/new" element={<ProductFormPage/>} />
+          <Route path="/product/edit/:id" element={<ProductFormPage/>} />
+
         </Routes>
       </main>
 

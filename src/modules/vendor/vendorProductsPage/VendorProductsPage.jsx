@@ -1,9 +1,11 @@
-import React from 'react';
-import { ArrowLeft, Edit2, Plus, Trash2 } from "lucide-react";
+import React, {useState} from 'react';
+import { ArrowLeft, Edit2, Plus, Trash2, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductListItem } from "@/components/shared/ProductListItem";
 import { useNavigate } from "react-router-dom";
 import { useProductsData } from "@/hooks/products/useProductsData";
+import {productService} from "@/services/productService";
+import './VendorProductsPage.css'
 
 const VendorActions = ({ onEdit, onDelete }) => (
     <div className="flex items-center gap-1">
@@ -17,11 +19,34 @@ const VendorActions = ({ onEdit, onDelete }) => (
 );
 
 const VendorProductsPage = () => {
-    const { isLoading, isError, data } = useProductsData();
+    const { isLoading, isError, data, refetch } = useProductsData();
     const navigate = useNavigate();
 
-    const handleEdit = (id) => navigate(`/product/${id}`);
-    const handleDelete = (id) => console.log("Deletar ID:", id);
+    const [showDeleteModal , setShowDeleteModal ] = useState(false);
+    const [deletedProductId, setDeletedProductId] = useState(null);
+
+    const handleDeleteClick = (id) => {
+        setDeletedProductId(id)
+        setShowDeleteModal(true);
+    };
+
+    const confirmDelete = async () => {
+        try {
+            await productService.deleteProduct(Number(deletedProductId));
+
+            setDeletedProductId(null)
+            setShowDeleteModal(false);
+
+            if (refetch) await refetch();
+
+        } catch (error) {
+            console.error("Erro ao deletar", error);
+            alert("Erro ao excluir produto.");
+            setShowDeleteModal(false);
+        }
+    };
+
+    const handleEdit = (id) => navigate(`/product/edit/${id}`);
 
     if (isLoading) return <div className="p-8 text-center">Carregando seus produtos...</div>;
     if (isError || !data) return <div className="p-8 text-center text-red-500">Erro ao carregar estoque.</div>;
@@ -59,7 +84,7 @@ const VendorProductsPage = () => {
                         actions={
                             <VendorActions
                                 onEdit={() => handleEdit(product.id)}
-                                onDelete={() => handleDelete(product.id)}
+                                onDelete={() => handleDeleteClick(product.id)}
                             />
                         }
                         extraInfo={`Estoque: ${product.stock || 0}`}
@@ -75,6 +100,39 @@ const VendorProductsPage = () => {
                     <Plus className="w-7 h-7" strokeWidth={2.5}/>
                 </Button>
             </div>
+
+            {showDeleteModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <div className="alert-icon-bg">
+                            <AlertTriangle size={40} color="#ef4444" strokeWidth={2.5} />
+                        </div>
+
+                        <h3 className="modal-title">Excluir Produto?</h3>
+
+                        <p className="modal-message">
+                            Tem certeza que deseja excluir este item>
+                            <br/>Essa ação não pode ser desfeita.
+                        </p>
+
+                        <div className="modal-actions">
+                            <button
+                                className="btn-modal-cancel"
+                                onClick={() => setShowDeleteModal(false)}
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                className="btn-modal-delete"
+                                onClick={confirmDelete}
+                            >
+                                <Trash2 size={18} />
+                                Sim, Excluir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
